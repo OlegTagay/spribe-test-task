@@ -1,16 +1,23 @@
 package com.spribe.project.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigManager {
     private static final Properties props = new Properties();
+    private static final Logger log = LoggerFactory.getLogger(ConfigManager.class);
 
     static {
         load("config/framework.properties");
-        String env = System.getProperty("env", "dev");
+        String env = get("framework.active.env", "dev");
         load(String.format("config/application-%s.properties", env));
+
+        log.info("Active profile: " + getActiveProfile());
+        log.debug("Using config settings:\n" + props);
     }
 
     private static void load(String fileName) {
@@ -32,18 +39,22 @@ public class ConfigManager {
     }
 
     public static String getBaseUri() {
-        return get("base.uri", "http://localhost:8080");
+        return get("application.base.uri", "http://localhost:8080");
+    }
+
+    public static String getActiveProfile() {
+        return get("framework.active.profile", "dev");
     }
 
     public static int getThreadCount() {
-        return getInt("thread.count", Runtime.getRuntime().availableProcessors());
+        return getInt("framework.thread.count", Runtime.getRuntime().availableProcessors());
     }
 
     public static int getTimeout() {
-        return getInt("timeout", 30);
+        return getInt("framework.http.timeout", 30);
     }
 
     public static int getRetryCount() {
-        return getInt("retry.count", 0);
+        return getInt("framework.retry.count", 0);
     }
 }
