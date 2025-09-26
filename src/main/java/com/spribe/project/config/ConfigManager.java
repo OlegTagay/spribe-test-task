@@ -36,7 +36,7 @@ public class ConfigManager {
     }
 
     public static int getThreadCount() {
-        return getInt("thread.count", 1);
+        return getInt("thread.count", Runtime.getRuntime().availableProcessors());
     }
 
     public static int getTimeout() {

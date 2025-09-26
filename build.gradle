@@ -21,6 +21,7 @@ repositories {
 dependencies {
     implementation "io.qameta.allure:allure-testng:$allureVersion"
     implementation "org.slf4j:slf4j-api:$slf4jVersion"
+    implementation "org.testng:testng:$testngVersion"
 
     runtimeOnly "ch.qos.logback:logback-classic:$logbackVersion"
 
@@ -30,4 +31,9 @@ dependencies {
 
 test {
     useTestNG()
+}
+
+tasks.register('runTestNG', JavaExec) {
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass.set("com.spribe.project.runner.TestNGRunner")
 }

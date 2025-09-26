@@ -18,14 +18,22 @@ public class VerifyUser {
     @Test
     public void testPositive() {
         System.out.println("Config: " + ConfigManager.getBaseUri());
-
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         Assert.assertTrue(true);
     }
 
     @Test
     public void testNegative() {
         System.out.println("Config: " + ConfigManager.getBaseUri());
-
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         Assert.assertTrue(false);
     }
 
@@ -33,6 +41,11 @@ public class VerifyUser {
     @Tag("Smoke")
     @Test(description = "Create a user successfully")
     public void createUser_shouldReturn201() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         given()
                 .when()
                 .get(ConfigManager.getBaseUri() + "/player/get/all")
