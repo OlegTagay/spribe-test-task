@@ -1,0 +1,3 @@
+CLI RUN:
+
+./gradlew clean test;./gradlew allureReport;./gradlew allureServe

@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '3.0.0'
+}
+
+ext {
+    testngVersion = '7.11.0'
+    restAssuredVersion = '5.5.6'
+    allureVersion = '2.30.0'
+    slf4jVersion = '2.0.16'
+    logbackVersion = '1.5.7'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "io.qameta.allure:allure-testng:$allureVersion"
+    implementation "org.slf4j:slf4j-api:$slf4jVersion"
+
+    runtimeOnly "ch.qos.logback:logback-classic:$logbackVersion"
+
+    testImplementation "org.testng:testng:$testngVersion"
+    testImplementation "io.rest-assured:rest-assured:$restAssuredVersion"
+}
+
+test {
+    useTestNG()
+}
