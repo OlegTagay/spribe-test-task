@@ -1,21 +1,15 @@
-package com.spribe.project.models.response;
-
-import com.spribe.project.models.common.ErrorResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+package com.spribe.project.models.response.create;
 
 import java.util.Objects;
 
-public class UserResponse {
+public class PlayerCreateResponse {
     private Integer age;
+    private String gender;
     private Integer id;
     private String login;
     private String password;
     private String role;
     private String screenName;
-
-    public UserResponse() {
-    }
 
     public Integer getAge() {
         return age;
@@ -23,6 +17,14 @@ public class UserResponse {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public Integer getId() {
@@ -68,19 +70,20 @@ public class UserResponse {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        UserResponse that = (UserResponse) o;
-        return Objects.equals(age, that.age) && Objects.equals(id, that.id) && Objects.equals(login, that.login) && Objects.equals(password, that.password) && Objects.equals(role, that.role) && Objects.equals(screenName, that.screenName);
+        PlayerCreateResponse that = (PlayerCreateResponse) o;
+        return Objects.equals(age, that.age) && Objects.equals(gender, that.gender) && Objects.equals(id, that.id) && Objects.equals(login, that.login) && Objects.equals(password, that.password) && Objects.equals(role, that.role) && Objects.equals(screenName, that.screenName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(age, id, login, password, role, screenName);
+        return Objects.hash(age, gender, id, login, password, role, screenName);
     }
 
     @Override
     public String toString() {
         return "UserResponse{" +
                 "age=" + age +
+                ", gender='" + gender + '\'' +
                 ", id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +

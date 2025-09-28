@@ -15,28 +15,6 @@ import static io.restassured.RestAssured.given;
 @Feature("User Management")
 public class VerifyUser {
 
-    @Test
-    public void testPositive() {
-        System.out.println("Config: " + ConfigManager.getBaseUri());
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        Assert.assertTrue(true);
-    }
-
-    @Test
-    public void testNegative() {
-        System.out.println("Config: " + ConfigManager.getBaseUri());
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        Assert.assertTrue(false);
-    }
-
     @Severity(SeverityLevel.CRITICAL)
     @Tag("Smoke")
     @Test(description = "Create a user successfully")
@@ -47,6 +25,8 @@ public class VerifyUser {
             throw new RuntimeException(e);
         }
         given()
+                .log()
+                .all()
                 .when()
                 .get(ConfigManager.getBaseUri() + "/player/get/all")
                 .then()
