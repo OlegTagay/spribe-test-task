@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "age": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "login": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "screenName": {
+      "type": "string"
+    }
+  },
+  "title": "PlayerCreateResponseDto"
+}

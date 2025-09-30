@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "properties": {
+    "players": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PlayerItem"
+      }
+    }
+  },
+  "title": "PlayerGetAllResponseDto"
+}

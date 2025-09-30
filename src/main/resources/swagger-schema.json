@@ -2,7 +2,8 @@
   "swagger": "2.0",
   "info": {
     "description": "Description: in db already created 2 players: \n1. login: supervisor, with role: supervisor.\n2. login: admin, with role: admin",
-    "title": "interview-test-app"
+    "title": "interview-test-app",
+    "version": "1.0.0"
   },
   "host": "3.68.165.45",
   "basePath": "/",

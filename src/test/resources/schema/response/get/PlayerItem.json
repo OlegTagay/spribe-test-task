@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "properties": {
+    "age": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "role": {
+      "type": "string"
+    },
+    "screenName": {
+      "type": "string"
+    }
+  },
+  "title": "PlayerItem"
+}

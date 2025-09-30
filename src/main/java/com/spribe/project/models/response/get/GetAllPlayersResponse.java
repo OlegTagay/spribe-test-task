@@ -4,32 +4,32 @@ import java.util.List;
 import java.util.Objects;
 
 public class GetAllPlayersResponse {
-    private List<PlayerItemResponse> playerItemResponseList;
+    private List<PlayerItemResponse> players;
 
-    public List<PlayerItemResponse> getPlayerItemResponseList() {
-        return playerItemResponseList;
+    public List<PlayerItemResponse> getPlayers() {
+        return players;
     }
 
-    public void setPlayerItemResponseList(List<PlayerItemResponse> playerItemResponseList) {
-        this.playerItemResponseList = playerItemResponseList;
+    public void setPlayers(List<PlayerItemResponse> players) {
+        this.players = players;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         GetAllPlayersResponse that = (GetAllPlayersResponse) o;
-        return Objects.equals(playerItemResponseList, that.playerItemResponseList);
+        return Objects.equals(players, that.players);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(playerItemResponseList);
+        return Objects.hashCode(players);
     }
 
     @Override
     public String toString() {
         return "GetAllPlayersResponse{" +
-                "playerItemResponseList=" + playerItemResponseList +
+                "players=" + players +
                 '}';
     }
 }

@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "playerId": {
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "title": "PlayerGetByPlayerIdRequestDto"
+}
