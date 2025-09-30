@@ -1,8 +1,8 @@
-package com.spribe.project.models.response.create;
+package com.spribe.project.models.response.get;
 
 import java.util.Objects;
 
-public class PlayerCreateResponse {
+public class PlayerGetByPlayerIdResponse {
     private Integer age;
     private String gender;
     private Long id;
@@ -11,11 +11,11 @@ public class PlayerCreateResponse {
     private String role;
     private String screenName;
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -27,11 +27,11 @@ public class PlayerCreateResponse {
         this.gender = gender;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -70,7 +70,7 @@ public class PlayerCreateResponse {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        PlayerCreateResponse that = (PlayerCreateResponse) o;
+        PlayerGetByPlayerIdResponse that = (PlayerGetByPlayerIdResponse) o;
         return Objects.equals(age, that.age) && Objects.equals(gender, that.gender) && Objects.equals(id, that.id) && Objects.equals(login, that.login) && Objects.equals(password, that.password) && Objects.equals(role, that.role) && Objects.equals(screenName, that.screenName);
     }
 
@@ -81,7 +81,7 @@ public class PlayerCreateResponse {
 
     @Override
     public String toString() {
-        return "UserResponse{" +
+        return "PlayerGetByPlayerIdResponse{" +
                 "age=" + age +
                 ", gender='" + gender + '\'' +
                 ", id=" + id +

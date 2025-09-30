@@ -3,13 +3,13 @@ package com.spribe.project.models.request.get;
 import java.util.Objects;
 
 public class PlayerGetByPlayerIdRequest {
-    private Integer playerId;
+    private Long playerId;
 
-    public Integer getPlayerId() {
+    public Long getPlayerId() {
         return playerId;
     }
 
-    public void setPlayerId(Integer playerId) {
+    public void setPlayerId(Long playerId) {
         this.playerId = playerId;
     }
 

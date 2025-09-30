@@ -1,11 +1,10 @@
-package com.spribe.project.models.response.create;
+package com.spribe.project.models.request.update;
 
 import java.util.Objects;
 
-public class PlayerCreateResponse {
+public class PlayerUpdateRequest {
     private Integer age;
     private String gender;
-    private Long id;
     private String login;
     private String password;
     private String role;
@@ -25,14 +24,6 @@ public class PlayerCreateResponse {
 
     public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getLogin() {
@@ -70,21 +61,20 @@ public class PlayerCreateResponse {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        PlayerCreateResponse that = (PlayerCreateResponse) o;
-        return Objects.equals(age, that.age) && Objects.equals(gender, that.gender) && Objects.equals(id, that.id) && Objects.equals(login, that.login) && Objects.equals(password, that.password) && Objects.equals(role, that.role) && Objects.equals(screenName, that.screenName);
+        PlayerUpdateRequest that = (PlayerUpdateRequest) o;
+        return Objects.equals(age, that.age) && Objects.equals(gender, that.gender) && Objects.equals(login, that.login) && Objects.equals(password, that.password) && Objects.equals(role, that.role) && Objects.equals(screenName, that.screenName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(age, gender, id, login, password, role, screenName);
+        return Objects.hash(age, gender, login, password, role, screenName);
     }
 
     @Override
     public String toString() {
-        return "UserResponse{" +
+        return "PlayerUpdateRequest{" +
                 "age=" + age +
                 ", gender='" + gender + '\'' +
-                ", id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +

@@ -1,13 +1,12 @@
-package com.spribe.project.models.response.create;
+package com.spribe.project.models.response.update;
 
 import java.util.Objects;
 
-public class PlayerCreateResponse {
+public class PlayerUpdateResponse {
     private Integer age;
     private String gender;
     private Long id;
     private String login;
-    private String password;
     private String role;
     private String screenName;
 
@@ -43,14 +42,6 @@ public class PlayerCreateResponse {
         this.login = login;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getRole() {
         return role;
     }
@@ -70,23 +61,22 @@ public class PlayerCreateResponse {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        PlayerCreateResponse that = (PlayerCreateResponse) o;
-        return Objects.equals(age, that.age) && Objects.equals(gender, that.gender) && Objects.equals(id, that.id) && Objects.equals(login, that.login) && Objects.equals(password, that.password) && Objects.equals(role, that.role) && Objects.equals(screenName, that.screenName);
+        PlayerUpdateResponse that = (PlayerUpdateResponse) o;
+        return Objects.equals(age, that.age) && Objects.equals(gender, that.gender) && Objects.equals(id, that.id) && Objects.equals(login, that.login) && Objects.equals(role, that.role) && Objects.equals(screenName, that.screenName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(age, gender, id, login, password, role, screenName);
+        return Objects.hash(age, gender, id, login, role, screenName);
     }
 
     @Override
     public String toString() {
-        return "UserResponse{" +
+        return "PlayerUpdateResponse{" +
                 "age=" + age +
                 ", gender='" + gender + '\'' +
                 ", id=" + id +
                 ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
                 ", screenName='" + screenName + '\'' +
                 '}';
