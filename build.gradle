@@ -22,8 +22,7 @@ dependencies {
     implementation "io.qameta.allure:allure-testng:$allureVersion"
     implementation "org.slf4j:slf4j-api:$slf4jVersion"
     implementation "org.testng:testng:$testngVersion"
-
-    runtimeOnly "ch.qos.logback:logback-classic:$logbackVersion"
+    implementation "ch.qos.logback:logback-classic:$logbackVersion"
 
     testImplementation "org.testng:testng:$testngVersion"
     testImplementation "io.rest-assured:rest-assured:$restAssuredVersion"

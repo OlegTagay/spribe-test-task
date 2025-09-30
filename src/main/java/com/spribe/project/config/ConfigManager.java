@@ -1,5 +1,8 @@
 package com.spribe.project.config;
 
+import ch.qos.logback.classic.LoggerContext;
+import ch.qos.logback.classic.encoder.PatternLayoutEncoder;
+import ch.qos.logback.core.ConsoleAppender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,10 +16,11 @@ public class ConfigManager {
 
     static {
         load("config/framework.properties");
-        String env = get("framework.active.env", "dev");
+        String env = get("framework.active.profile", "dev");
         load(String.format("config/application-%s.properties", env));
+        initLogger();
 
-        log.info("Active profile: " + getActiveProfile());
+        log.info("Active profile: " + env);
         log.debug("Using config settings:\n" + props);
     }
 
@@ -28,6 +32,25 @@ public class ConfigManager {
         } catch (IOException e) {
             throw new RuntimeException("Failed to load config: " + fileName, e);
         }
+    }
+
+    private static void initLogger() {
+        LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
+
+        PatternLayoutEncoder encoder = new PatternLayoutEncoder();
+        encoder.setContext(context);
+        encoder.setPattern("%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n");
+        encoder.start();
+
+        ConsoleAppender consoleAppender = new ConsoleAppender();
+        consoleAppender.setContext(context);
+        consoleAppender.setEncoder(encoder);
+        consoleAppender.start();
+
+        ch.qos.logback.classic.Logger rootLogger = context.getLogger("ROOT");
+        rootLogger.detachAndStopAllAppenders();
+        rootLogger.addAppender(consoleAppender);
+        rootLogger.setLevel(ch.qos.logback.classic.Level.toLevel(getLogLevel()));
     }
 
     public static String get(String key, String defaultValue) {
@@ -56,5 +79,9 @@ public class ConfigManager {
 
     public static int getRetryCount() {
         return getInt("framework.retry.count", 0);
+    }
+
+    public static String getLogLevel() {
+        return get("framework.log.level", "INFO");
     }
 }

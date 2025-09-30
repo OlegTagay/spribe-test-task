@@ -19,17 +19,14 @@ public class VerifyUser {
     @Tag("Smoke")
     @Test(description = "Create a user successfully")
     public void createUser_shouldReturn201() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         given()
                 .log()
                 .all()
                 .when()
                 .get(ConfigManager.getBaseUri() + "/player/get/all")
                 .then()
+                .log()
+                .all()
                 .statusCode(200);
     }
 }
