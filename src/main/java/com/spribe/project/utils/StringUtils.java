@@ -3,7 +3,7 @@ package com.spribe.project.utils;
 import java.time.Instant;
 
 public class StringUtils {
-    private static final String prefix = "atf-";
+    public static final String prefix = "atf-";
 
     public static String generateLogin() {
 
@@ -27,4 +27,6 @@ public class StringUtils {
         return prefix + "screen_name" + "-" +
                 Instant.now();
     }
+
+
 }
