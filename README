@@ -1,6 +1,6 @@
 CLI RUN:
 
-* ./gradlew runTestNG
-* ./gradlew runTestNG;./gradlew allureReport;./gradlew allureServe
-* ./gradlew clean test
-* ./gradlew clean test;./gradlew allureReport;./gradlew allureServe
+./gradlew runTestNG
+./gradlew runTestNG;./gradlew allureReport;./gradlew allureServe
+./gradlew clean test
+./gradlew clean test;./gradlew allureReport;./gradlew allureServe
