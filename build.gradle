@@ -43,4 +43,5 @@ test {
 tasks.register('runTestNG', JavaExec) {
     classpath = sourceSets.test.runtimeClasspath
     mainClass.set("com.spribe.project.runner.TestNGRunner")
+    systemProperty "allure.results.directory", "build/allure-results"
 }
