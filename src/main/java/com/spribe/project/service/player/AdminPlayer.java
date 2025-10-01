@@ -8,26 +8,22 @@ import com.spribe.project.models.request.create.PlayerCreateRequest;
 import com.spribe.project.models.response.create.PlayerCreateResponse;
 import com.spribe.project.utils.RequestUtils;
 import com.spribe.project.utils.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static io.restassured.RestAssured.given;
 
-public class RandomPlayer {
-    private static final Logger log = LoggerFactory.getLogger(RandomPlayer.class);
+public class AdminPlayer {
 
     public static PlayerCreateResponse createPlayer() {
-        log.info("Start creating RandomPlayer");
         PlayerCreateRequest request = new PlayerCreateRequest(
-                "18", Gender.MALE, StringUtils.generateLogin(), StringUtils.generatePassword(), Role.USER, StringUtils.generateScreenName()
+                "18", Gender.MALE, StringUtils.generateLogin(), StringUtils.generatePassword(), Role.ADMIN, StringUtils.generateScreenName()
         );
 
         PlayerCreateResponse response =
                 given()
                         .baseUri(ConfigManager.getBaseUri())
-                        .when()
                         .log()
                         .all()
+                        .when()
                         .pathParam("editor", Editor.SUPERVISOR)
                         .queryParams(RequestUtils.toMap(request))
                         .get("/player/create/{editor}")
@@ -36,11 +32,7 @@ public class RandomPlayer {
                         .extract()
                         .as(PlayerCreateResponse.class);
 
-//        PlayerCreateResponse response = new PlayerCreateResponse(
-//                18, "", new Random().nextLong(1000000, 9999999), "", "", "", ""
-//        );
-
-        log.info("Finish creating RandomPlayer.\nResponse: " + response);
+        System.out.println(response);
 
         return response;
     }

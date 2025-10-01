@@ -19,7 +19,7 @@ public class TestNGRunner {
 
         XmlTest test = new XmlTest(suite);
         test.setName("API Tests");
-        test.setPackages(Collections.singletonList(new XmlPackage("com.spribe.tests.users")));
+        test.setPackages(Collections.singletonList(new XmlPackage("com.spribe.tests.player")));
 
         TestNG testng = new TestNG();
         testng.setXmlSuites(Collections.singletonList(suite));

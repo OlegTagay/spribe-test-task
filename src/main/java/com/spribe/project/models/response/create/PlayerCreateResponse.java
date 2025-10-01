@@ -11,6 +11,19 @@ public class PlayerCreateResponse {
     private String role;
     private String screenName;
 
+    public PlayerCreateResponse() {
+    }
+
+    public PlayerCreateResponse(Integer age, String gender, Long id, String login, String password, String role, String screenName) {
+        this.age = age;
+        this.gender = gender;
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.role = role;
+        this.screenName = screenName;
+    }
+
     public Integer getAge() {
         return age;
     }
