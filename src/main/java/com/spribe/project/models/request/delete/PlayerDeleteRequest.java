@@ -5,6 +5,13 @@ import java.util.Objects;
 public class PlayerDeleteRequest {
     private Long playerId;
 
+    public PlayerDeleteRequest() {
+    }
+
+    public PlayerDeleteRequest(Long playerId) {
+        this.playerId = playerId;
+    }
+
     public Long getPlayerId() {
         return playerId;
     }

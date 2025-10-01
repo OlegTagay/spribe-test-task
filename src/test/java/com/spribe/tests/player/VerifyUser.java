@@ -1,8 +1,15 @@
-package com.spribe.tests.users;
+package com.spribe.tests.player;
 
 import com.spribe.project.config.ConfigManager;
+import com.spribe.project.enums.Editor;
+import com.spribe.project.enums.Gender;
+import com.spribe.project.enums.Role;
+import com.spribe.project.models.request.create.PlayerCreateRequest;
+import com.spribe.project.models.response.create.PlayerCreateResponse;
 import com.spribe.project.models.response.get.GetAllPlayersResponse;
 import com.spribe.project.models.response.get.PlayerItemResponse;
+import com.spribe.project.utils.RequestUtils;
+import com.spribe.project.utils.StringUtils;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
@@ -18,8 +25,8 @@ import java.util.stream.Collectors;
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
-@Epic("User API")
-@Feature("User Management")
+@Epic("Player API")
+@Feature("Player Management")
 public class VerifyUser {
 
     @Severity(SeverityLevel.CRITICAL)
@@ -77,5 +84,35 @@ public class VerifyUser {
                 .then()
                 .statusCode(200)
                 .body(matchesJsonSchemaInClasspath("schema/response/get/PlayerGetByPlayerIdResponse.json"));
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag("Smoke")
+    @Test(description = "Create a user successfully")
+    public void createUser_shouldCheckSchemaC() {
+
+        System.out.println(StringUtils.generateLogin());
+        System.out.println(StringUtils.generatePassword());
+        System.out.println(StringUtils.generateScreenName());
+//
+//        PlayerCreateRequest request = new PlayerCreateRequest(
+//                "18", Gender.MALE, "login", "password", Role.USER, "screenName"
+//        );
+//
+//        PlayerCreateResponse response =
+//                given()
+//                        .baseUri(ConfigManager.getBaseUri())
+//                        .when()
+//                        .log()
+//                        .all()
+//                        .pathParam("editor", Editor.SUPERVISOR)
+//                        .queryParams(RequestUtils.toMap(request))
+//                        .get("/player/create/{editor}")
+//                        .then()
+//                        .statusCode(200)
+//                        .extract()
+//                        .as(PlayerCreateResponse.class);
+//
+//        System.out.println(response);
     }
 }

@@ -10,6 +10,18 @@ public class PlayerUpdateRequest {
     private String role;
     private String screenName;
 
+    public PlayerUpdateRequest() {
+    }
+
+    public PlayerUpdateRequest(Integer age, String gender, String login, String password, String role, String screenName) {
+        this.age = age;
+        this.gender = gender;
+        this.login = login;
+        this.password = password;
+        this.role = role;
+        this.screenName = screenName;
+    }
+
     public Integer getAge() {
         return age;
     }

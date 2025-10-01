@@ -1,14 +1,29 @@
 package com.spribe.project.models.request.create;
 
+import com.spribe.project.enums.Gender;
+import com.spribe.project.enums.Role;
+
 import java.util.Objects;
 
 public class PlayerCreateRequest {
     private String age;
-    private String gender;
+    private Gender gender;
     private String login;
     private String password;
-    private String role;
+    private Role role;
     private String screenName;
+
+    public PlayerCreateRequest() {
+    }
+
+    public PlayerCreateRequest(String age, Gender gender, String login, String password, Role role, String screenName) {
+        this.age = age;
+        this.gender = gender;
+        this.login = login;
+        this.password = password;
+        this.role = role;
+        this.screenName = screenName;
+    }
 
     public String getAge() {
         return age;
@@ -18,11 +33,11 @@ public class PlayerCreateRequest {
         this.age = age;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -42,11 +57,11 @@ public class PlayerCreateRequest {
         this.password = password;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 
