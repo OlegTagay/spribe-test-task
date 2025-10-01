@@ -4,6 +4,7 @@ import com.spribe.project.config.ConfigManager;
 import com.spribe.project.enums.Editor;
 import com.spribe.project.enums.Gender;
 import com.spribe.project.enums.Role;
+import com.spribe.project.models.common.HttpStatus;
 import com.spribe.project.models.request.create.PlayerCreateRequest;
 import com.spribe.project.models.request.get.PlayerGetByPlayerIdRequest;
 import com.spribe.project.models.response.create.PlayerCreateResponse;
@@ -38,7 +39,7 @@ public class VerifySchema extends BaseTest {
                 .queryParams(RequestUtils.toMap(request))
                 .get("/player/create/{editor}")
                 .then()
-                .statusCode(200)
+                .statusCode(HttpStatus.OK.code())
                 .body(matchesJsonSchemaInClasspath("schema/response/create/PlayerCreateResponse.json"));
     }
 
@@ -56,7 +57,7 @@ public class VerifySchema extends BaseTest {
                 .body(RequestUtils.toMap(request))
                 .post("/player/get")
                 .then()
-                .statusCode(200)
+                .statusCode(HttpStatus.OK.code())
                 .body(matchesJsonSchemaInClasspath("schema/response/get/PlayerGetByPlayerIdResponse.json"));
     }
 }

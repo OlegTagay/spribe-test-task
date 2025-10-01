@@ -4,6 +4,7 @@ import com.spribe.project.config.ConfigManager;
 import com.spribe.project.enums.Editor;
 import com.spribe.project.enums.Gender;
 import com.spribe.project.enums.Role;
+import com.spribe.project.models.common.HttpStatus;
 import com.spribe.project.models.request.create.PlayerCreateRequest;
 import com.spribe.project.models.response.create.PlayerCreateResponse;
 import com.spribe.project.utils.RequestUtils;
@@ -28,7 +29,7 @@ public class AdminPlayer {
                         .queryParams(RequestUtils.toMap(request))
                         .get("/player/create/{editor}")
                         .then()
-                        .statusCode(200)
+                        .statusCode(HttpStatus.OK.code())
                         .extract()
                         .as(PlayerCreateResponse.class);
 

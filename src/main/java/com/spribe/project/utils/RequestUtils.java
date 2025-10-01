@@ -1,5 +1,6 @@
 package com.spribe.project.utils;
 
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Map;

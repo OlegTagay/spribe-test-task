@@ -1,6 +1,7 @@
 package com.spribe.project.service.player;
 
 import com.spribe.project.config.ConfigManager;
+import com.spribe.project.models.common.HttpStatus;
 import com.spribe.project.models.response.get.GetAllPlayersResponse;
 import com.spribe.project.models.response.get.PlayerItemResponse;
 import io.restassured.RestAssured;
@@ -22,7 +23,7 @@ public class PlayerQueryService {
                         .when()
                         .get("/player/get/all")
                         .then()
-                        .statusCode(200)
+                        .statusCode(HttpStatus.OK.code())
                         .extract()
                         .as(GetAllPlayersResponse.class);
 

@@ -2,6 +2,7 @@ package com.spribe.tests.player;
 
 import com.spribe.project.config.ConfigManager;
 import com.spribe.project.enums.Editor;
+import com.spribe.project.models.common.HttpStatus;
 import com.spribe.project.models.request.get.PlayerGetByPlayerIdRequest;
 import com.spribe.project.models.response.get.PlayerItemResponse;
 import com.spribe.project.service.player.PlayerQueryService;
@@ -13,8 +14,6 @@ import io.qameta.allure.testng.Tag;
 import io.restassured.http.ContentType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
@@ -34,7 +33,7 @@ public class VerifyDelete extends BaseTest {
                 .body(RequestUtils.toMap(request))
                 .delete("/player/delete/{editor}")
                 .then()
-                .statusCode(204);
+                .statusCode(HttpStatus.NO_CONTENT.code());
 
         Assert.assertFalse(new PlayerQueryService().exists(request.getPlayerId()));
     }
@@ -65,7 +64,7 @@ public class VerifyDelete extends BaseTest {
                 .body(RequestUtils.toMap(request))
                 .delete("/player/delete/{editor}")
                 .then()
-                .statusCode(403);
+                .statusCode(HttpStatus.FORBIDDEN.code());
 
         Assert.assertFalse(new PlayerQueryService().exists(request.getPlayerId()));
     }
