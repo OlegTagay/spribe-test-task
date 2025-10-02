@@ -1,9 +1,8 @@
 ###CLI RUN:
 
-./gradlew runTestNG
-./gradlew runTestNG;./gradlew allureReport;./gradlew allureServe
-./gradlew clean test
-./gradlew clean test;./gradlew allureReport;./gradlew allureServe
+./gradlew clean runTestNG
+./gradlew clean runTestNG;./gradlew allureReport;./gradlew allureServe
+
 
 ###CONFIG:
 Configs are stored undeer folder: src/main/resources/config

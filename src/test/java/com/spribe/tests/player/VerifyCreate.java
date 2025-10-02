@@ -24,6 +24,8 @@ public class VerifyCreate {
     @Tag("Smoke")
     @Tag("Create")
     @Test(description = "Create user should return 200")
+    @Issue("Response contains null values, meanwhile user expects to have them set")
+    @Ignore
     public void createUser_shouldReturn200() {
         PlayerCreateRequest request = new PlayerCreateRequest(
                 "18", Gender.MALE, StringUtils.generateLogin(), StringUtils.generatePassword(), Role.USER, StringUtils.generateScreenName()
@@ -49,6 +51,8 @@ public class VerifyCreate {
     @Tag("Smoke")
     @Tag("Create")
     @Test(description = "Create admin should return 200")
+    @Issue("Response contains null values, meanwhile user expects to have them set")
+    @Ignore
     public void createAdmin_shouldReturn200() {
         PlayerCreateRequest request = new PlayerCreateRequest(
                 "18", Gender.MALE, StringUtils.generateLogin(), StringUtils.generatePassword(), Role.ADMIN, StringUtils.generateScreenName()

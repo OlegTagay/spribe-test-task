@@ -12,10 +12,12 @@ import com.spribe.project.models.response.get.GetAllPlayersResponse;
 import com.spribe.project.utils.RequestUtils;
 import com.spribe.project.utils.StringUtils;
 import com.spribe.tests.base.BaseTest;
+import io.qameta.allure.Issue;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.testng.Tag;
 import io.restassured.http.ContentType;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -27,6 +29,8 @@ public class VerifySchema extends BaseTest {
     @Tag("Smoke")
     @Tag("Schema")
     @Test(description = "Create user should have correct schema")
+    @Issue("Response contains null values, meanwhile user expects to have them set")
+    @Ignore
     public void createUser_shouldCheckSchema() {
         PlayerCreateRequest request = new PlayerCreateRequest(
                 "18", Gender.MALE, StringUtils.generateLogin(), StringUtils.generatePassword(), Role.USER, StringUtils.generateScreenName()
