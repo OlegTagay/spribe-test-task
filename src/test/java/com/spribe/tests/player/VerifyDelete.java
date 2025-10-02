@@ -8,11 +8,13 @@ import com.spribe.project.models.response.get.PlayerItemResponse;
 import com.spribe.project.service.player.PlayerQueryService;
 import com.spribe.project.utils.RequestUtils;
 import com.spribe.tests.base.BaseTest;
+import io.qameta.allure.Issue;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.testng.Tag;
 import io.restassured.http.ContentType;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -41,8 +43,30 @@ public class VerifyDelete extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Tag("Smoke")
     @Tag("Delete")
-    @Test(description = "Delete user should return 204")
-    public void deleteNonExistingUser_shouldReturn400() {
+    @Test(description = "Delete user should return 403")
+    @Issue("Invalid editor is not allowed to delete players")
+    @Ignore
+    public void deleteNonExistingUser_shouldReturn403() {
+        PlayerGetByPlayerIdRequest request = new PlayerGetByPlayerIdRequest(randomPlayerResponse.get().getId());
+
+        given()
+                .baseUri(ConfigManager.getBaseUri())
+                .when()
+                .pathParam("editor", Editor.INVALID)
+                .header("Content-Type", ContentType.JSON)
+                .body(RequestUtils.toMap(request))
+                .delete("/player/delete/{editor}")
+                .then()
+                .statusCode(HttpStatus.FORBIDDEN.code());
+
+        Assert.assertFalse(new PlayerQueryService().exists(request.getPlayerId()));
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag("Smoke")
+    @Tag("Delete")
+    @Test(description = "Delete user should return 403")
+    public void deleteWithInvalidEditor_shouldReturn403() {
         PlayerQueryService service = new PlayerQueryService();
 
         long maxId = service.getAll().stream()

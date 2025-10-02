@@ -1,6 +1,21 @@
-CLI RUN:
+###CLI RUN:
 
 ./gradlew runTestNG
 ./gradlew runTestNG;./gradlew allureReport;./gradlew allureServe
 ./gradlew clean test
 ./gradlew clean test;./gradlew allureReport;./gradlew allureServe
+
+###CONFIG:
+Configs are stored undeer folder: src/main/resources/config
+First one which is used: framework.properties
+Depending on the "framework.active.profile", it uploads specific application.properties, in case for dev, it will use application-dev.properties
+
+The other two are environment specific: application-qa.properties, application-dev.properties
+
+Threads can be tunned using variable: framework.thread.count
+By default is used 1 Thread. If no framework.thread.count specified, then machines MAX CPU amount will be used.
+
+TestNG runner is located at:
+src/main/java/com/spribe/project/runner/TestNGRunner.java
+
+To change package, assign required in "test.setPackages(Collections.singletonList(new XmlPackage("com.spribe.tests.player")))"

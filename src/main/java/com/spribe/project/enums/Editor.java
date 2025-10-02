@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum Editor {
     SUPERVISOR("supervisor"),
+    INVALID("invalid"),
     ADMIN("admin");
 
     private final String value;

@@ -8,12 +8,14 @@ import com.spribe.project.models.response.get.PlayerGetByPlayerIdResponse;
 import com.spribe.project.service.player.PlayerQueryService;
 import com.spribe.project.utils.RequestUtils;
 import com.spribe.tests.base.BaseTest;
+import io.qameta.allure.Issue;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.testng.Tag;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -65,7 +67,7 @@ public class VerifyGet extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Tag("Smoke")
     @Tag("Get")
-    @Test(description = "Get user should return 200")
+    @Test(description = "Get users should return 200")
     public void getAllUsers_shouldReturn200() {
         PlayerGetByPlayerIdRequest request = new PlayerGetByPlayerIdRequest(randomPlayerResponse.get().getId());
 
@@ -80,5 +82,24 @@ public class VerifyGet extends BaseTest {
                         .as(GetAllPlayersResponse.class);
 
         Assert.assertTrue(new PlayerQueryService().exists(request.getPlayerId()));
+    }
+
+    @Severity(SeverityLevel.CRITICAL)
+    @Tag("Smoke")
+    @Tag("Get")
+    @Test(description = "Get user should return 404")
+    @Issue("Get invalid playerId should return 404")
+    @Ignore
+    public void getUser_shouldReturn400() {
+        PlayerGetByPlayerIdRequest request = new PlayerGetByPlayerIdRequest(-1l);
+
+        given()
+                .baseUri(ConfigManager.getBaseUri())
+                .when()
+                .header("Content-Type", ContentType.JSON)
+                .body(RequestUtils.toMap(request))
+                .post("/player/get")
+                .then()
+                .statusCode(HttpStatus.NOT_FOUND.code());
     }
 }

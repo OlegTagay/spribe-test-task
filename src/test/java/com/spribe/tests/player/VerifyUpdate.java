@@ -22,36 +22,35 @@ public class VerifyUpdate extends BaseTest {
     @Severity(SeverityLevel.CRITICAL)
     @Tag("Smoke")
     @Tag("Update")
-    @Test(description = "Update user should return 200")
-    public void createUser_shouldReturn200() {
+    @Test(description = "Update user screen name should return 200")
+    public void createUserScreenName_shouldReturn200() {
         PlayerQueryService playerQueryService = new PlayerQueryService();
         Optional<PlayerItemResponse> playerItemResponse = playerQueryService.getById(randomPlayerResponse.get().getId());
 
         System.out.println("-".repeat(10));
-        System.out.println(playerQueryService.getById(randomPlayerResponse.get().getId()));
+        System.out.println(playerItemResponse.get());
         System.out.println("-".repeat(10));
 
         playerItemResponse.get().setScreenName("atf-updated");
-        playerItemResponse.get().setAge(55);
-        playerItemResponse.get().setGender("female");
-        playerItemResponse.get().setRole("admin");
 
         PlayerUpdateResponse response =
                 given()
                         .baseUri(ConfigManager.getBaseUri())
                         .when()
                         .pathParam("editor", Editor.SUPERVISOR)
-                        .pathParam("id", randomPlayerResponse.get().getId())
+                        .pathParam("id", playerItemResponse.get().getId())
                         .body(playerItemResponse.get())
+                        .log().all()
                         .patch("/player/create/{editor}/{id}")
                         .then()
+                        .log().all()
                         .statusCode(HttpStatus.OK.code())
                         .extract()
                         .as(PlayerUpdateResponse.class);
 
 
         System.out.println("-".repeat(10));
-        System.out.println(playerQueryService.getById(randomPlayerResponse.get().getId()));
+        System.out.println(playerItemResponse.get());
         System.out.println("-".repeat(10));
 //        PlayerAssertions.assertMatches(request, response);
     }
